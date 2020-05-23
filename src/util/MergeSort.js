@@ -12,11 +12,11 @@ const merge = (arr1, arr2) => {
   return sorted.concat(arr1.slice().concat(arr2.slice()));
 };
 
-export default MergeSort = (arr) => {
+export const mergeSortAlgo = (arr) => {
   if (arr.length <= 1) return arr;
   let mid = Math.floor(arr.length / 2);
-  let left = MergeSort(arr.slice(0, mid));
-  let right = MergeSort(arr.slice(mid));
+  let left = mergeSortAlgo(arr.slice(0, mid));
+  let right = mergeSortAlgo(arr.slice(mid));
 
   return merge(left, right);
 };

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Navbar from "./Navbar";
 // sorting algorithms
-import MergeSort from "../util/MergeSort";
+import { mergeSortAlgo } from "../util/MergeSort";
 // styled components
 import { StyledBar } from "./styled-components/StyledBar";
 // mui stuff
@@ -26,15 +26,21 @@ class SortingVisualizer extends Component {
     this.setState({ array: arr });
   };
 
+  mergeSort = () => {
+    const sortedArray = mergeSortAlgo(this.state.array);
+    console.log(sortedArray);
+    this.setState({ array: sortedArray });
+  };
+
   render() {
     return (
       <Fragment>
-        <Navbar resetArray={this.resetArray} />
+        <Navbar resetArray={this.resetArray} mergeSort={this.mergeSort} />
         <Container style={{ paddingTop: "25px" }}>
           <Grid container direction="row" justify="center" alignItems="center">
             {this.state.array.map((val, idx) => (
-              <Grid item>
-                <StyledBar key={idx} height={val} />
+              <Grid item key={idx}>
+                <StyledBar height={val} />
               </Grid>
             ))}
           </Grid>
