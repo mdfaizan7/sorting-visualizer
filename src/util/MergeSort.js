@@ -1,6 +1,4 @@
-var animations = [];
-
-function merge(arr, start, mid, end) {
+function merge(arr, start, mid, end, animations) {
   let start2 = mid + 1;
 
   if (arr[mid] <= arr[start2]) {
@@ -28,21 +26,21 @@ function merge(arr, start, mid, end) {
   }
 }
 
-function mergeSort(arr, l, r) {
+function mergeSort(arr, l, r, animations) {
   if (l < r) {
     let m = Math.floor(l + (r - l) / 2);
 
-    mergeSort(arr, l, m);
-    mergeSort(arr, m + 1, r);
+    mergeSort(arr, l, m, animations);
+    mergeSort(arr, m + 1, r, animations);
 
-    merge(arr, l, m, r);
+    merge(arr, l, m, r, animations);
     animations.push({ array: arr.slice(), ex1: l, ex2: r });
   }
 }
 
-export const mergeSortAlgo = (arr, startIdx, endIdx) => {
-  mergeSort(arr, startIdx, endIdx);
-  let sortingAnimations = animations;
-  animations = [];
-  return sortingAnimations;
+export const mergeSortAnimations = (arr, startIdx, endIdx) => {
+  const animations = [];
+  mergeSort(arr, startIdx, endIdx, animations);
+
+  return animations;
 };

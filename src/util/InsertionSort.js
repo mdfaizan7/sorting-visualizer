@@ -15,6 +15,6 @@ function insertionSort(arr, animations) {
 export const insertionSortAnimations = (arr) => {
   const animations = [];
   insertionSort(arr, animations);
-  animations.push({ array: arr, ex1: -1, ex2: -1 });
+
   return animations;
 };

@@ -1,6 +1,8 @@
 {
   "name": "sorting-visualizer",
   "version": "0.1.0",
+  "description": "This is a sorting visualizer. You can run this app to see how different sorting techniques work.",
+  "author": "Mohammad Faizan Azim",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.14",
