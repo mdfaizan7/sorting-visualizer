@@ -1,4 +1,4 @@
-const animations = [];
+var animations = [];
 
 function swap(array, i, j) {
   var temp = array[i];
@@ -13,12 +13,6 @@ function quickSort(array, left, right) {
 
     for (var i = left; i < right; i++) {
       var currentValue = array[i];
-      animations.push({
-        array: array.slice(),
-        pivot: right,
-        ex1: i,
-        ex2: swappingIndex,
-      });
       if (currentValue < pivotValue) {
         swap(array, i, swappingIndex);
         animations.push({
@@ -43,6 +37,8 @@ function quickSort(array, left, right) {
 }
 
 export const quickSortAnimations = (arr, startIdx, endIdx) => {
-  const sorted = quickSort(arr, startIdx, endIdx);
-  return animations;
+  quickSort(arr, startIdx, endIdx);
+  let sortingAnimations = animations;
+  animations = [];
+  return sortingAnimations;
 };

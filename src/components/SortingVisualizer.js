@@ -10,7 +10,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 
 class SortingVisualizer extends Component {
-  state = { array: [], sortingAlgorithm: "" };
+  state = { array: [] };
 
   componentDidMount() {
     this.resetArray();
@@ -24,38 +24,36 @@ class SortingVisualizer extends Component {
       arr.push(Math.floor(Math.random() * (max - min) + min)); // pushes a random number between min and max
     }
 
-    this.setState({ array: arr });
+    this.setState({ array: arr, ex1: 200, ex2: 200, pivot: 200 });
   };
 
   mergeSort = () => {
-    const sortedArray = mergeSortAlgo(this.state.array);
-    console.log(sortedArray);
-    this.setState({ array: sortedArray });
+    let sortingAnimations = mergeSortAlgo(this.state.array, 0, 129);
+    for (let i = 0; i < sortingAnimations.length - 1; i++) {
+      setTimeout(() => {
+        let { array, ex1, ex2 } = sortingAnimations[i];
+        this.setState({
+          array,
+          ex1,
+          ex2,
+        });
+      }, i * 1);
+    }
   };
 
   quickSort = () => {
-    const sortingAnimations = quickSortAnimations(this.state.array, 0, 129);
+    let sortingAnimations = quickSortAnimations(this.state.array, 0, 129);
+    console.log(sortingAnimations.length);
     for (let i = 0; i < sortingAnimations.length; i++) {
       setTimeout(() => {
-        const { array, pivot, ex1, ex2 } = sortingAnimations[i];
-        if (i === sortingAnimations.length - 1) {
-          this.setState({
-            array,
-            pivot: -1,
-            ex1: -1,
-            ex2: -1,
-            sortingAlgorithm: "",
-          });
-        } else {
-          this.setState({
-            array,
-            pivot,
-            ex1,
-            ex2,
-            sortingAlgorithm: "mergeSort",
-          });
-        }
-      }, 1);
+        let { array, pivot, ex1, ex2 } = sortingAnimations[i];
+        this.setState({
+          array,
+          pivot,
+          ex1,
+          ex2,
+        });
+      }, i * 1);
     }
   };
 
@@ -74,27 +72,17 @@ class SortingVisualizer extends Component {
             justify="center"
             alignItems="flex-end"
           >
-            {this.state.array.map((val, idx) => {
-              if (this.state.sortingAlgorithm === "mergeSort") {
-                return (
-                  <Grid item key={idx}>
-                    {idx === this.state.pivot ? (
-                      <StyledBar height={val} color="red" />
-                    ) : idx === this.state.ex1 || idx === this.state.ex2 ? (
-                      <StyledBar height={val} color="orange" />
-                    ) : (
-                      <StyledBar height={val} color="seagreen" />
-                    )}
-                  </Grid>
-                );
-              } else {
-                return (
-                  <Grid item key={idx}>
-                    <StyledBar height={val} color="seagreen" />
-                  </Grid>
-                );
-              }
-            })}
+            {this.state.array.map((val, idx) => (
+              <Grid item key={idx}>
+                {idx === this.state.pivot ? (
+                  <StyledBar height={val} color="red" />
+                ) : idx === this.state.ex1 || idx === this.state.ex2 ? (
+                  <StyledBar height={val} color="orange" />
+                ) : (
+                  <StyledBar height={val} color="seagreen" />
+                )}
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Fragment>

@@ -1,24 +1,49 @@
-const merge = (arr1, arr2) => {
-  let sorted = [];
+let animations = [];
 
-  while (arr1.length && arr2.length) {
-    if (arr1[0] < arr2[0]) {
-      sorted.push(arr1.shift());
-    } else {
-      sorted.push(arr2.shift());
-    }
+function merge(arr, start, mid, end) {
+  let start2 = mid + 1;
+
+  if (arr[mid] <= arr[start2]) {
+    return;
   }
 
-  return sorted.concat(arr1.slice().concat(arr2.slice()));
-};
+  while (start <= mid && start2 <= end) {
+    if (arr[start] <= arr[start2]) {
+      start++;
+      animations.push({ array: arr.slice(), ex1: start, ex2: start2 });
+    } else {
+      let value = arr[start2];
+      let index = start2;
 
-export const mergeSortAlgo = (arr) => {
-  if (arr.length <= 1) return arr;
-  let mid = Math.floor(arr.length / 2);
-  let left = mergeSortAlgo(arr.slice(0, mid));
-  let right = mergeSortAlgo(arr.slice(mid));
+      while (index !== start) {
+        arr[index] = arr[index - 1];
+        index--;
+      }
+      arr[start] = value;
+      animations.push({ array: arr.slice(), ex1: start, ex2: index });
+      start++;
+      mid++;
+      start2++;
+    }
+  }
+}
 
-  let intermediate = merge(left, right);
-  console.log(intermediate.slice());
-  return intermediate;
+function mergeSort(arr, l, r) {
+  if (l < r) {
+    let m = Math.floor(l + (r - l) / 2);
+
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+
+    merge(arr, l, m, r);
+    animations.push({ array: arr.slice(), ex1: l, ex2: r });
+  }
+}
+
+export const mergeSortAlgo = (arr, startIdx, endIdx) => {
+  mergeSort(arr, startIdx, endIdx);
+  // let sortingAnimations = animations;
+  // animations = [];
+  // return sortingAnimations;
+  return animations;
 };
