@@ -6,38 +6,43 @@ import Button from "@material-ui/core/Button";
 
 class Navbar extends Component {
   render() {
+    const {
+      resetArray,
+      mergeSort,
+      quickSort,
+      selectionSort,
+      insertionSort,
+    } = this.props;
+
     return (
       <div>
         <AppBar style={{ background: "#202020" }} position="static">
           <Toolbar>
-            <Button
-              style={{ color: "#f04580" }}
-              onClick={this.props.resetArray}
-            >
+            <Button style={{ color: "#f04580" }} onClick={resetArray}>
               reset array
             </Button>
             <RightNav>
               <Button
                 style={{ color: "rgb(117, 117, 238)" }}
-                onClick={this.props.mergeSort}
+                onClick={mergeSort}
               >
                 Merge Sort
               </Button>
               <Button
                 style={{ color: "rgb(117, 117, 238)" }}
-                onClick={this.props.quickSort}
+                onClick={quickSort}
               >
                 Quick Sort
               </Button>
               <Button
                 style={{ color: "rgb(117, 117, 238)" }}
-                onClick={this.props.resetArray}
+                onClick={insertionSort}
               >
                 Insertion Sort
               </Button>
               <Button
                 style={{ color: "rgb(104, 104, 255)" }}
-                onClick={this.props.resetArray}
+                onClick={selectionSort}
               >
                 Selection Sort
               </Button>

@@ -57,6 +57,14 @@ class SortingVisualizer extends Component {
     }
   };
 
+  selectionSort = () => {
+    // TODO: make visualizer for selection sort
+  };
+
+  insertionSort = () => {
+    // TODO: make visualizer insertion sort
+  };
+
   render() {
     return (
       <Fragment>
@@ -64,6 +72,8 @@ class SortingVisualizer extends Component {
           resetArray={this.resetArray}
           mergeSort={this.mergeSort}
           quickSort={this.quickSort}
+          insertionSort={this.insertionSort}
+          selectionSort={this.selectionSort}
         />
         <Container style={{ paddingTop: "25px" }}>
           <Grid
