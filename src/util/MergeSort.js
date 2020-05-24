@@ -1,4 +1,4 @@
-let animations = [];
+var animations = [];
 
 function merge(arr, start, mid, end) {
   let start2 = mid + 1;
@@ -42,8 +42,7 @@ function mergeSort(arr, l, r) {
 
 export const mergeSortAlgo = (arr, startIdx, endIdx) => {
   mergeSort(arr, startIdx, endIdx);
-  // let sortingAnimations = animations;
-  // animations = [];
-  // return sortingAnimations;
-  return animations;
+  let sortingAnimations = animations;
+  animations = [];
+  return sortingAnimations;
 };
