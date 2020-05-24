@@ -8,22 +8,37 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <AppBar color="default" position="static">
+        <AppBar style={{ background: "#202020" }} position="static">
           <Toolbar>
-            <Button color="secondary" onClick={this.props.resetArray}>
+            <Button
+              style={{ color: "#f04580" }}
+              onClick={this.props.resetArray}
+            >
               reset array
             </Button>
             <RightNav>
-              <Button color="primary" onClick={this.props.mergeSort}>
+              <Button
+                style={{ color: "rgb(117, 117, 238)" }}
+                onClick={this.props.mergeSort}
+              >
                 Merge Sort
               </Button>
-              <Button color="primary" onClick={this.props.resetArray}>
+              <Button
+                style={{ color: "rgb(117, 117, 238)" }}
+                onClick={this.props.quickSort}
+              >
                 Quick Sort
               </Button>
-              <Button color="primary" onClick={this.props.resetArray}>
+              <Button
+                style={{ color: "rgb(117, 117, 238)" }}
+                onClick={this.props.resetArray}
+              >
                 Insertion Sort
               </Button>
-              <Button color="primary" onClick={this.props.resetArray}>
+              <Button
+                style={{ color: "rgb(104, 104, 255)" }}
+                onClick={this.props.resetArray}
+              >
                 Selection Sort
               </Button>
             </RightNav>

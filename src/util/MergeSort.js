@@ -18,5 +18,7 @@ export const mergeSortAlgo = (arr) => {
   let left = mergeSortAlgo(arr.slice(0, mid));
   let right = mergeSortAlgo(arr.slice(mid));
 
-  return merge(left, right);
+  let intermediate = merge(left, right);
+  console.log(intermediate.slice());
+  return intermediate;
 };
