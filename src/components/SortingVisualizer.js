@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from "react";
 import Navbar from "./Navbar";
-// sorting algorithms
-import { mergeSortAlgo } from "../util/MergeSort";
+// sorting animations
+import { mergeSortAnimations } from "../util/MergeSort";
 import { quickSortAnimations } from "../util/QuickSort";
+import { insertionSortAnimations } from "../util/InsertionSort";
 // styled components
 import { StyledBar } from "./styled-components/StyledBar";
 // mui stuff
@@ -28,7 +29,7 @@ class SortingVisualizer extends Component {
   };
 
   mergeSort = () => {
-    let sortingAnimations = mergeSortAlgo(this.state.array, 0, 129);
+    let sortingAnimations = mergeSortAnimations(this.state.array, 0, 129);
     for (let i = 0; i < sortingAnimations.length - 1; i++) {
       setTimeout(() => {
         let { array, ex1, ex2 } = sortingAnimations[i];
@@ -43,7 +44,6 @@ class SortingVisualizer extends Component {
 
   quickSort = () => {
     let sortingAnimations = quickSortAnimations(this.state.array, 0, 129);
-    console.log(sortingAnimations.length);
     for (let i = 0; i < sortingAnimations.length; i++) {
       setTimeout(() => {
         let { array, pivot, ex1, ex2 } = sortingAnimations[i];
@@ -57,12 +57,22 @@ class SortingVisualizer extends Component {
     }
   };
 
-  selectionSort = () => {
-    // TODO: make visualizer for selection sort
+  insertionSort = () => {
+    let sortingAnimations = insertionSortAnimations(this.state.array);
+    for (let i = 0; i < sortingAnimations.length - 1; i++) {
+      setTimeout(() => {
+        let { array, ex1, ex2 } = sortingAnimations[i];
+        this.setState({
+          array,
+          ex1,
+          ex2,
+        });
+      }, i * 1);
+    }
   };
 
-  insertionSort = () => {
-    // TODO: make visualizer insertion sort
+  selectionSort = () => {
+    // TODO: make visualizer for selection sort
   };
 
   render() {
