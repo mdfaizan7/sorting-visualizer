@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import { mergeSortAnimations } from "../util/MergeSort";
 import { quickSortAnimations } from "../util/QuickSort";
 import { insertionSortAnimations } from "../util/InsertionSort";
+import { bubbleSortAnimations } from "../util/BubbleSort";
 // styled components
 import { StyledBar } from "./styled-components/StyledBar";
 // mui stuff
@@ -11,7 +12,11 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 
 class SortingVisualizer extends Component {
-  state = { array: [] };
+  constructor(props) {
+    super(props);
+
+    this.state = { array: [] };
+  }
 
   componentDidMount() {
     this.resetArray();
@@ -29,7 +34,11 @@ class SortingVisualizer extends Component {
   };
 
   mergeSort = () => {
-    let sortingAnimations = mergeSortAnimations(this.state.array, 0, 129);
+    let sortingAnimations = mergeSortAnimations(
+      this.state.array,
+      0,
+      this.state.array.length
+    );
     for (let i = 0; i < sortingAnimations.length - 1; i++) {
       setTimeout(() => {
         let { array, ex1, ex2 } = sortingAnimations[i];
@@ -38,12 +47,20 @@ class SortingVisualizer extends Component {
           ex1,
           ex2,
         });
-      }, i * 1);
+      }, 1);
     }
   };
 
+  heapSort = () => {
+    // TODO: make visualizer for heap sort
+  };
+
   quickSort = () => {
-    let sortingAnimations = quickSortAnimations(this.state.array, 0, 129);
+    let sortingAnimations = quickSortAnimations(
+      this.state.array,
+      0,
+      this.state.array.length
+    );
     for (let i = 0; i < sortingAnimations.length; i++) {
       setTimeout(() => {
         let { array, pivot, ex1, ex2 } = sortingAnimations[i];
@@ -55,6 +72,10 @@ class SortingVisualizer extends Component {
         });
       }, i * 1);
     }
+  };
+
+  radixSort = () => {
+    // TODO: make visualizer for radix sort
   };
 
   insertionSort = () => {
@@ -71,6 +92,20 @@ class SortingVisualizer extends Component {
     }
   };
 
+  bubbleSort = () => {
+    let sortingAnimations = bubbleSortAnimations(this.state.array);
+    for (let i = 0; i < sortingAnimations.length - 1; i++) {
+      setTimeout(() => {
+        let { array, ex1, ex2 } = sortingAnimations[i];
+        this.setState({
+          array,
+          ex1,
+          ex2,
+        });
+      }, 0.2);
+    }
+  };
+
   selectionSort = () => {
     // TODO: make visualizer for selection sort
   };
@@ -81,8 +116,11 @@ class SortingVisualizer extends Component {
         <Navbar
           resetArray={this.resetArray}
           mergeSort={this.mergeSort}
+          heapSort={this.heapSort}
           quickSort={this.quickSort}
+          radixSort={this.radixSort}
           insertionSort={this.insertionSort}
+          bubbleSort={this.bubbleSort}
           selectionSort={this.selectionSort}
         />
         <Container style={{ paddingTop: "25px" }}>
