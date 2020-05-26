@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // styled-components
 import { RightNav } from "./styled-components/RightNav";
 // mui stuff
-import AppBar from "@material-ui/core/Appbar";
+import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
