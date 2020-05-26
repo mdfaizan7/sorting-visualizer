@@ -28,7 +28,7 @@ This is a sorting visualizer. You can run this app to see how different sorting 
     if you are using yarn...
 
     ```shell
-    cd react-bitConnect-client
+    cd sorting-visualizer
     yarn install
     ```
 
