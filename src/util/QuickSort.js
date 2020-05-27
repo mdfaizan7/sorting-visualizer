@@ -21,13 +21,6 @@ function quickSort(array, left, right, animations) {
           ex2: swappingIndex,
         });
         swappingIndex++;
-      } else {
-        animations.push({
-          array: array.slice(),
-          pivot: right,
-          ex1: i,
-          ex2: swappingIndex,
-        });
       }
     }
     swap(array, swappingIndex, right);
