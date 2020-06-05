@@ -5,11 +5,14 @@ import { mergeSortAnimations } from "../util/MergeSort";
 import { quickSortAnimations } from "../util/QuickSort";
 import { insertionSortAnimations } from "../util/InsertionSort";
 import { bubbleSortAnimations } from "../util/BubbleSort";
+import { heapSortAnimations } from "../util/HeapSort";
 // styled components
 import { StyledBar } from "./styled-components/StyledBar";
 // mui stuff
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+
+const SORT_TIMEOUT = 50;
 
 class SortingVisualizer extends Component {
   constructor(props) {
@@ -47,12 +50,24 @@ class SortingVisualizer extends Component {
           ex1,
           ex2,
         });
-      }, 1);
+      }, i * SORT_TIMEOUT);
     }
   };
 
   heapSort = () => {
     // TODO: make visualizer for heap sort
+    let sortingAnimations = heapSortAnimations(this.state.array);
+    for (let i = 0; i < sortingAnimations.length; i++) {
+      setTimeout(() => {
+        let { array, pivot, ex1, ex2 } = sortingAnimations[i];
+        this.setState({
+          array,
+          pivot,
+          ex1,
+          ex2,
+        });
+      }, i * SORT_TIMEOUT);
+    }
   };
 
   quickSort = () => {
@@ -70,7 +85,7 @@ class SortingVisualizer extends Component {
           ex1,
           ex2,
         });
-      }, i * 1);
+      }, i * SORT_TIMEOUT);
     }
   };
 
@@ -88,7 +103,7 @@ class SortingVisualizer extends Component {
           ex1,
           ex2,
         });
-      }, i * 1);
+      }, i * SORT_TIMEOUT);
     }
   };
 
@@ -102,7 +117,7 @@ class SortingVisualizer extends Component {
           ex1,
           ex2,
         });
-      }, 0.2);
+      }, i * SORT_TIMEOUT);
     }
   };
 
