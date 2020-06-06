@@ -11,15 +11,15 @@ export const bubbleSortAnimations = (arr) => {
     j,
     n = arr.length;
   for (i = 0; i < n - 1; i++) {
-    let skip_animation = false;
+    let skip_animation = 0;
     for (j = 0; j < n - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
         swap(arr, j, j + 1);
       }
-      if (!skip_animation) {
+      if (skip_animation === 0) {
         animations.push({ array: arr.slice(), ex1: j, ex2: j + 1 });
-        skip_animation = true;
-      } else skip_animation = false;
+        skip_animation = 4;
+      } else skip_animation--;
     }
   }
   animations.push({ array: arr.slice(), ex1: j, ex2: j + 1 });

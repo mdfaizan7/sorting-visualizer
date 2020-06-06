@@ -15,7 +15,7 @@ export const selectionSortAnimations = (arr) => {
       }
       if (skip_animation === 0) {
         animations.push({ array: arr.slice(), ex1: j, ex2: i });
-        skip_animation = 10;
+        skip_animation = 4;
       } else skip_animation--;
     }
     if (minIdx !== i) {

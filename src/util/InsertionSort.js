@@ -3,14 +3,14 @@ function insertionSort(arr, animations) {
   for (i = 1; i < arr.length; i++) {
     key = arr[i];
     j = i - 1;
-    let skip_animation = false;
+    let skip_animation = 0;
     while (j >= 0 && arr[j] > key) {
       arr[j + 1] = arr[j];
       j--;
-      if (!skip_animation) {
+      if (skip_animation === 0) {
         animations.push({ array: arr.slice(), ex1: i, ex2: j });
-        skip_animation = true;
-      } else skip_animation = false;
+        skip_animation = 4;
+      } else skip_animation--;
     }
     arr[j + 1] = key;
     animations.push({ array: arr.slice(), ex1: i, ex2: j });
