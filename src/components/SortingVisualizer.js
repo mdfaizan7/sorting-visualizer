@@ -6,6 +6,7 @@ import { quickSortAnimations } from "../util/QuickSort";
 import { insertionSortAnimations } from "../util/InsertionSort";
 import { bubbleSortAnimations } from "../util/BubbleSort";
 import { heapSortAnimations } from "../util/HeapSort";
+import { selectionSortAnimations } from "../util/SelectionSort";
 // styled components
 import { StyledBar } from "./styled-components/StyledBar";
 // mui stuff
@@ -55,7 +56,6 @@ class SortingVisualizer extends Component {
   };
 
   heapSort = () => {
-    // TODO: make visualizer for heap sort
     let sortingAnimations = heapSortAnimations(this.state.array);
     for (let i = 0; i < sortingAnimations.length; i++) {
       setTimeout(() => {
@@ -122,7 +122,17 @@ class SortingVisualizer extends Component {
   };
 
   selectionSort = () => {
-    // TODO: make visualizer for selection sort
+    let sortingAnimations = selectionSortAnimations(this.state.array);
+    for (let i = 0; i < sortingAnimations.length - 1; i++) {
+      setTimeout(() => {
+        let { array, ex1, ex2 } = sortingAnimations[i];
+        this.setState({
+          array,
+          ex1,
+          ex2,
+        });
+      }, i * SORT_TIMEOUT);
+    }
   };
 
   render() {
