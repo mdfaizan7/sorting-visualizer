@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import GithubCorner from 'react-github-corner'
 
 class Navbar extends Component {
   render() {
@@ -12,7 +13,6 @@ class Navbar extends Component {
       mergeSort,
       heapSort,
       quickSort,
-      radixSort,
       insertionSort,
       bubbleSort,
       selectionSort,
@@ -20,6 +20,8 @@ class Navbar extends Component {
 
     return (
       <AppBar style={{ background: "#202020" }} position="static">
+      <GithubCorner href='https://github.com/mdfaizan7/sorting-visualizer' />
+
         <Toolbar>
           <Grid container direction="row" justify="center" alignItems="center">
             <Grid item lg={2}>
@@ -54,13 +56,6 @@ class Navbar extends Component {
                   size="small"
                 >
                   Quick Sort
-                </Button>
-                <Button
-                  style={{ color: "#6e9ddb", marginLeft: "10px" }}
-                  onClick={radixSort}
-                  size="small"
-                >
-                  Radix Sort
                 </Button>
                 <Button
                   style={{ color: "#6e9ddb", marginLeft: "10px" }}
