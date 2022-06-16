@@ -20,7 +20,7 @@ class Navbar extends Component {
 
     return (
       <AppBar style={{ background: "#202020" }} position="static">
-      <GithubCorner href='https://github.com/mdfaizan7/sorting-visualizer' />
+      <GithubCorner href='https://github.com/mdfaizan7/sorting-visualizer' style={{zIndex: 10000}}/>
 
         <Toolbar>
           <Grid container direction="row" justify="center" alignItems="center">
